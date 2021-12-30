@@ -1,0 +1,12 @@
+- hosts: webserver
+  become: no
+  tasks:
+  - name: installing the HTTPD package
+    yum : name=httpd state=present
+    
+  - name: starting the HTTPD Service
+    service: name=httpd state=started
+    
+  - name: copy source code from server machine
+    copy: src=index.html dest=/var/www/html
+     
